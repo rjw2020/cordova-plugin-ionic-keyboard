@@ -17,7 +17,8 @@
     <platform name="ios">
 
         <js-module src="www/ios/keyboard.js" name="keyboard">
-    	    <clobbers target="window.Keyboard"/>
+<!--     	    <clobbers target="window.Keyboard"/> -->
+			<clobbers target="cordova.plugins.Keyboard"/>
         </js-module>
 
         <config-file target="config.xml" parent="/*">
