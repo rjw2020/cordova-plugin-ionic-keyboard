@@ -145,7 +145,7 @@ NSString* UITraitsClassString;
 }
 
 - (void)fireOnHiding {
-    [self.commandDelegate evalJs:@"Keyboard.fireOnHiding();"];
+    [self.commandDelegate evalJs:@"cordova.plugins.Keyboard.fireOnHiding();"];
 }
 
 - (void)onKeyboardWillShow:(NSNotification *)note
@@ -164,7 +164,7 @@ NSString* UITraitsClassString;
     
     [self setKeyboardStyle:self.keyboardStyle];
 
-    NSString *js = [NSString stringWithFormat:@"Keyboard.fireOnShowing(%d);", (int)height];
+    NSString *js = [NSString stringWithFormat:@"cordova.plugins.Keyboard.fireOnShowing(%d);", (int)height];
     [self.commandDelegate evalJs:js];
 }
 
@@ -177,13 +177,13 @@ NSString* UITraitsClassString;
         [self resetScrollView];
     }
 
-    NSString *js = [NSString stringWithFormat:@"Keyboard.fireOnShow(%d);", (int)height];
+    NSString *js = [NSString stringWithFormat:@"cordova.plugins.Keyboard.fireOnShow(%d);", (int)height];
     [self.commandDelegate evalJs:js];
 }
 
 - (void)onKeyboardDidHide:(NSNotification *)sender
 {
-    [self.commandDelegate evalJs:@"Keyboard.fireOnHide();"];
+    [self.commandDelegate evalJs:@"cordova.plugins.Keyboard.fireOnHide();"];
     [self resetScrollView];
 }
 
@@ -229,14 +229,14 @@ NSString* UITraitsClassString;
     switch (self.keyboardResizes) {
         case ResizeBody:
         {
-            NSString *js = [NSString stringWithFormat:@"Keyboard.fireOnResize(%d, %d, document.body);",
+            NSString *js = [NSString stringWithFormat:@"cordova.plugins.Keyboard.fireOnResize(%d, %d, document.body);",
                             _paddingBottom, (int)f.size.height];
             [self.commandDelegate evalJs:js];
             break;
         }
         case ResizeIonic:
         {
-            NSString *js = [NSString stringWithFormat:@"Keyboard.fireOnResize(%d, %d, document.querySelector('ion-app'));",
+            NSString *js = [NSString stringWithFormat:@"cordova.plugins.Keyboard.fireOnResize(%d, %d, document.querySelector('ion-app'));",
                             _paddingBottom, (int)f.size.height];
             [self.commandDelegate evalJs:js];
             break;
